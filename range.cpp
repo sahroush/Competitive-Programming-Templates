@@ -1,6 +1,6 @@
 struct range{
 	set < pii > st;
-	void add(int l , int r , vector < pii > &vec = vec){
+	void add(int l , int r , vector < pii > &vec){
 		vec.clear();
 		auto L = st.lower_bound({l , 0});
 		auto R = st.upper_bound({r , Inf});
@@ -29,7 +29,7 @@ struct range{
 		if(v.back().second < r)vec.pb({cur , r});
 		st.insert({LL , RR});
 	}
-	void remove(int l , int r , vector < pii > &vec = vec){
+	void remove(int l , int r , vector < pii > &vec){
 		vec.clear();
 		auto L = st.lower_bound({l , 0});
 		auto R = st.upper_bound({r , Inf});
