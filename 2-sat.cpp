@@ -1,11 +1,11 @@
-struct twosat{ //~x = 2*x+1 , x = 2*x --> ~x = x^1
+struct sat{ //~x = 2*x+1 , x = 2*x --> ~x = x^1
 	int n;
 	vector < vector < int > > in , out;
 	vector < int >  mark , col , topo;
 	int c = 0;
 	twosat(int N):
-		n(N) , in(n*2+5) , out(n*2+5) , mark(n*2+5 , 0) , col(n*2+5, 0) , ans(n + 5){}
-	bool operator [] (int x){ return(col[2*i] > col[2*i + 1]);};
+		n(N) , in(n*2+5) , out(n*2+5) , mark(n*2+5 , 0) , col(n*2+5, 0){}
+	bool operator [] (int x){ return(col[2*x] > col[2*x + 1]);};
 	void add_edge(int v , int u){
 		in[u].pb(v) , out[v].pb(u);
 	}
