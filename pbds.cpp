@@ -7,42 +7,40 @@ using namespace std;
  
 template <class T> using Tree = tree<T, null_type, less<T>, rb_tree_tag,tree_order_statistics_node_update>;
 
-struct ordered_set {
-  int sz = 0, bit[N];
-  
-  int size() {
-    return sz;
-  }
-  
-  void update(int k, int x) {
-    k++;
-    while (k < N) {
-      bit[k] += x;
-      k += k & -k;
+struct oset{ // just don't use with numbers <= 0
+    int maxn;
+    vector < int > fen;
+    oset(int n):
+        maxn(n+100),
+        fen(maxn){}
+        
+    void add(int x , int pos){
+        for( ; pos < maxn ; pos += pos & -pos)
+            fen[pos] += x;
     }
-    sz += x;
-  }
-  
-  int find_by_order(int k) {
-    int ans = 0, sum = 0;
-    for (int j = 17; j >= 0; --j) {
-      ans += 1 << j;
-      if (ans < N && sum + bit[ans] < k) {
-    sum += bit[ans];
-      } else {
-    ans -= 1 << j;
-      }
+    int get(int pos){
+        int sum = 0 ;
+        for( ; pos ; pos -= pos & -pos)
+            sum += fen[pos];
+        return(sum);
     }
-    return ans + 1;
-  }
-  
-  int order_of_key(int k) {
-    k++;
-    int ans = 0;
-    while (k >= 1) {
-      ans += bit[k];
-      k -= k & -k;
+    
+    void insert(int x , int cnt = 1){
+        add(cnt , x);
     }
-    return ans - 1;
-  }
-} ;
+    void erase(int x , int cnt = 1){
+        add(-cnt , x);
+    }
+    
+    int find_by_order(int k){ // k-th element
+        int sum = 0 , pos = 0;
+        for(int i = log2(maxn) ; i >= 0 ; i --)
+            if(pos + (1 << i) < maxn and sum + fen[pos + (1 << i)] < k)
+                pos += (1 << i),
+                sum += fen[pos];
+        return(pos + 1);
+    }
+    int order_of_key(int key){ // number of elements <= key
+        return(get(key));
+    }
+};
