@@ -1,14 +1,8 @@
-/*
-#pragma GCC optimize("O2")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC target("avx,avx2,sse,sse2,fma,tune=native")
-//*/
 #include <bits/stdc++.h>
 
 using namespace std;
 
 #define endl '\n'
-#define migmig ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
 struct hopcroft{ //0 based
     int n , m; // size of each side
@@ -69,7 +63,7 @@ int l , r;
 int m;
 
 int32_t main(){
-    migmig
+    ios::sync_with_stdio(false);cin.tie(0);
     cin >> l >> r >> m;
     hopcroft g(l , r);
     while(m -- ){
