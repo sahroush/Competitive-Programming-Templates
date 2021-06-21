@@ -1,4 +1,3 @@
-//O(m^2 * log(INF)). Max flow.
 #include <bits/stdc++.h>
 
 using namespace std;
