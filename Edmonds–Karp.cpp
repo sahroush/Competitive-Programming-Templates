@@ -1,4 +1,3 @@
-//O(m^2 * n). Max flow.
 #include <bits/stdc++.h>
 
 using namespace std;
