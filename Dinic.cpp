@@ -1,4 +1,3 @@
-//O(m * sqrt(n)). Max flow.
 #include <bits/stdc++.h>
 
 using namespace std;
