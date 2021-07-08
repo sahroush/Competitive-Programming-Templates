@@ -19,7 +19,7 @@ ll pw(ll a, ll b, ll md = mod){ll res = 1;while(b){if(b&1){res=(a*res)%md;}a=(a*
 
 
 int32_t main(){
-	ios::sync_with_stdio(false),cin.tie(0),cout.tie(0);
+	cin.tie(0)->sync_with_stdio(0);
 	
 
 	return(0);
